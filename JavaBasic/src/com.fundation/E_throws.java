@@ -108,6 +108,14 @@ import java.io.IOException;
  *        意味着如果子类重写的方法中有异常，必须使用try-catch-finally方式处理。
  *    3.2 执行的方法a中，先后又调用了另外的几个方法，这几个方法是递进关系执行的。建议这几个方法使用throws
  *        的方式进行处理。而执行的方法a可以考虑使用try-catch-finally方式进行处理。
+ *
+ * ⑤ throw new + 异常类(): 生成一个异常对象并抛出，适用于编译器通过，但人为设置不通过
+ *
+ * ⑥ 如何自定义异常类？
+ *    1. 继承于现有的异常结构：RuntimeException 、Exception
+ *    2. 提供全局常量：serialVersionUID
+ *    3. 提供重载的构造器
+ *
  */
 public class E_throws {
     public static void main(String[] args) {
