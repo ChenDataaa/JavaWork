@@ -30,17 +30,32 @@ class Bank{
  * 单例模式Order类
  */
 
-class Order{
+class Order {
     // 2.声明当前类的实例，没有初始化，初始化在方法中提供
     private static Order instance = null;
+
     // 1.私有化构造器
-    private Order(){}
-    // 3.声明public，static的返回当前类对象的方法
-    public static Order getInstance(){
-        if(instance == null){
+    private Order() {
+    }
+
+    // 3.声明public，static的返回当前类对象的方法，静态synchronized线程安全
+/*  效率差
+    public static synchronized Order getInstance() {
+        if (instance == null) {
             instance = new Order();
         }
         return instance;
     }
-
+*/
+    // 效率高
+    public static Order getInstance() {
+        if (instance == null) {
+            synchronized (Order.class) {
+                if (instance == null) {
+                    instance = new Order();
+                }
+            }
+        }
+        return instance;
+    }
 }
